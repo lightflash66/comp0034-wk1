@@ -1,0 +1,54 @@
+pip install flask
+
+from flask import Flask, render_template_string
+
+app = Flask(__name__)
+
+# HTML template with CSS for animation
+HTML_TEMPLATE = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Moving Textbox</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+    @keyframes move {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(300px); }
+        100% { transform: translateX(0); }
+    }
+    .moving-textbox {
+        padding: 20px;
+        border: 2px solid #000;
+        animation: move 3s infinite;
+    }
+</style>
+</head>
+<body>
+    <div class="moving-textbox">Zharal</div>
+</body>
+</html>
+"""
+
+@app.route('/')
+def home():
+    return render_template_string(HTML_TEMPLATE)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+# Run the app
+
+# Open the browser and go to http://
+
+# The text "Zharal" will move from left to right and back to left in an infinite loop
+
+
+
